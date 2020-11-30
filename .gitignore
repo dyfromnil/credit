@@ -1,0 +1,6 @@
+__pycache__/
+.vscode/
+dataDump/
+model/
+
+cfg.yaml
