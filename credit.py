@@ -6,6 +6,7 @@ import yaml
 
 import numpy as np
 import pandas as pd
+import joblib
 import woe.feature_process as fp
 import woe.eval as eval
 
@@ -16,7 +17,6 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import RandomizedSearchCV
 from sklearn.metrics import make_scorer, roc_auc_score, accuracy_score
 from sklearn.linear_model import LogisticRegression
-from sklearn.externals import joblib
 
 
 if __name__ == "__main__":
