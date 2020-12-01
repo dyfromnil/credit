@@ -3,6 +3,7 @@ import sys
 from sys import argv
 import pickle
 import yaml
+import time
 
 import numpy as np
 import pandas as pd
@@ -20,6 +21,9 @@ from sklearn.linear_model import LogisticRegression
 
 
 if __name__ == "__main__":
+    print("Execution time: ", time.strftime(
+        "%Y-%m-%d %H:%M:%S", time.localtime()), '\n')
+
     if(len(argv) < 2):
         raise("请输入是否是首次运行（首次运行会重新训练lr模型） 0:首次 1:非首次")
     init = True if sys.argv[1] == '0' else False
@@ -76,8 +80,8 @@ if __name__ == "__main__":
         data.rename(columns={'label': 'target'}, inplace=True)
         data = data.astype('float')
 
-        ''' woe分箱, iv and transform '''
-        print("woe....")
+        # woe分箱, iv and transform
+        print("woe....\n")
         data_woe = data  # 用于存储所有数据的woe值
         info_value_list = []
         n_positive = sum(data['target'])
@@ -144,7 +148,7 @@ if __name__ == "__main__":
         }
 
         # Begin training
-        print("training...")
+        print("\ntraining...")
 
         grid_lr = RandomizedSearchCV(LR, lr_cv_params, cv=5, refit='acc', n_iter=10,
                                      scoring=scoring, n_jobs=-1)
@@ -176,4 +180,4 @@ if __name__ == "__main__":
     databaseOperation.deleteCreditScoreTable()
     databaseOperation.commitScore(credit)
 
-    print('Update scores success!')
+    print('\nUpdate scores success!\n')
