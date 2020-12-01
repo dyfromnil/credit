@@ -4,3 +4,4 @@ dataDump/
 model/
 
 cfg.yaml
+*.log
