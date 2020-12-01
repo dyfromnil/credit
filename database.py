@@ -24,7 +24,7 @@ class DataBase:
             cursor.execute(sql_order)
             data = cursor.fetchall()
             data = pd.DataFrame(list(data))
-            print("Retrieve success!")
+            print("Retrieve success!\n")
         except:
             data = pd.DataFrame()
         db.close()
